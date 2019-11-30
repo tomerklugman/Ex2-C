@@ -11,10 +11,10 @@ mains: $(OBJECTS_MAIN) libmyBank.a
 maind: $(OBJECTS_MAIN)
 	$(CC) $(FLAGS) -o maind $(OBJECTS_MAIN) ./libmyBank.so
 myBankd: libmyBank.so
-libmyBank.so: myBank.o
-	$(CC) -shared -o libmyBank.so myBank.o 
-libmyBank.a: myBank.o
-	$(CC) -shared -o libmyBank.a myBank.o 
+libmyBank.so: $(OBJECTS_LIB)
+	$(CC) -shared -o libmyBank.so $(OBJECTS_LIB) 
+libmyBank.a: $(OBJECTS_LIB)
+	$(CC) -shared -o libmyBank.a $(OBJECTS_LIB) 
 myBanks: $(OBJECTS_LIB)
 	$(AR) -rcs libmyBank.a $(OBJECTS_LIB)	
 main.o: main.c myBank.h 
